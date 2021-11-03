@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:todolist/constant/api.dart';
+
 class AddPage extends StatefulWidget {
   const AddPage({Key? key}) : super(key: key);
 
@@ -83,7 +85,7 @@ class _AddPageState extends State<AddPage> {
 
   Future postTodo() async {
     // var url = Uri.http('192.168.0.6:8000', '/api/post-todolist');
-    var url = Uri.http('192.168.0.5:8000', '/api/post-todolist');
+    var url = Uri.http('${AllURL['ip']}', '${AllURL['post-todolist']}');
     Map<String, String> header = {"Content-type" : "application/json"};
     String jsondata = '{"title" : "${todo_title.text}", "detail" : "${todo_detail.text}"}';
     var response = await http.post(url, headers: header, body: jsondata);

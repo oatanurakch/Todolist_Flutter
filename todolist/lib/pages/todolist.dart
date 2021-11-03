@@ -7,6 +7,8 @@ import 'dart:convert';
 
 import 'package:todolist/pages/update_todolist.dart';
 
+import 'package:todolist/constant/api.dart';
+
 class Todolist extends StatefulWidget {
   // const Todolist({ Key? key }) : super(key: key);
 
@@ -95,7 +97,8 @@ class _TodolistState extends State<Todolist> {
 
   Future<void> getTodolist() async {
     List alltodo = [];
-    var url = Uri.http('192.168.0.5:8000', 'api/get-all-todolist');
+    var url = Uri.http('${AllURL['ip']}', '${AllURL['get-todolist']}');
+    // var url = Uri.http('192.168.0.5:8000', 'api/get-all-todolist');
     var response = await http.get(url);
     // var result = json.decode(response.body);
     var result = utf8.decode(response.bodyBytes);

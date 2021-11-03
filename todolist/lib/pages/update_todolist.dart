@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:todolist/constant/api.dart';
+
 // การแก้ไขคำที่เหมือนกันให้ Double Click ที่คำที่ต้องการแก้ จากนั้นกด CTRL + D เพื่อเลือกคำที่เหมือนกัน
 class UpdatePage extends StatefulWidget {
   final v1, v2, v3;
@@ -102,8 +104,9 @@ class _UpdatePageState extends State<UpdatePage> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Future UpdateTodo() async {
-    var url = Uri.http('192.168.0.5:8000', '/api/update-todolist/$_v1');
+    var url = Uri.http('${AllURL['ip']}', '${AllURL['put-todolist']}/$_v1');
     // var url = Uri.http('8b6c-171-101-98-85.ngrok.io', '/api/post-todolist');
     Map<String, String> header = {"Content-type": "application/json"};
     String jsondata =
@@ -113,8 +116,9 @@ class _UpdatePageState extends State<UpdatePage> {
     print(response.body);
   }
 
+  // ignore: non_constant_identifier_names
   Future DeleteTodo() async {
-    var url = Uri.http('192.168.0.5:8000', '/api/delete-todolist/$_v1');
+    var url = Uri.http('${AllURL['ip']}', '${AllURL['กำสำะำ-todolist']}/$_v1');
     // var url = Uri.http('8b6c-171-101-98-85.ngrok.io', '/api/post-todolist');
     Map<String, String> header = {"Content-type": "application/json"};
     var response = await http.delete(url, headers: header);
